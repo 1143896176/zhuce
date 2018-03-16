@@ -50,7 +50,7 @@
 
     $(function () {
 
-        var boo1 = false
+       /* var boo1 = false
         var num = $("#number").val();
         var tel = $("#tel").val();
         console.log(num)
@@ -94,7 +94,7 @@
             num = $("#number").val();
 
             if (boo1 == true && num != null&&num!="" &&flag==true) {
-
+                alert(";kp")
                 $("#btn").attr("disabled",false)
             }
         });
@@ -108,20 +108,56 @@
                 $(this).text("");
                 flag=false;
             }
-          
+            alert(num)
             if (boo1 == true && num != null&&num!="" &&flag==true) {
 
                 $("#btn").attr("disabled",false)
             }
-        })
-        $('#number').mouseenter(function () {
-            tel = $("#tel").val();
-            var reg = new RegExp(/^1[0-9]{10}$/);
+        })*/
+        var boo1 = false
+        var num = $("#number").val();
+        console.log(num)
+        $('#id').val(id);
+        $('#tel').keydown(function () {
+            var tel = $("#tel").val();
+            var reg = new RegExp(/^1[0-9]{9}$/);
             boo1 = reg.test(tel);
-            if(boo1==false){
-                alert("请输入正确的手机号")
+            select();
+        })
+        $('#yanzh').click(function(){
+            $(this).attr("disabled", true)
+            var i=60;
+            var times=setInterval(function(){
+                i--;
+                $(this).attr("disabled", true)
+                if(i==0||i<0){
+                    i=60
+                }else if(i<=60&&i>=1){
+                    $('#yanzh').html('已发送'+i);
+                }
+            },1000)
+            setTimeout(function(){
+                clearInterval(times)
+                $('#yanzh').attr("disabled", false)
+                $('#yanzh').html('重新发送');
+            },60000)
+        })
+        select();
+        function select(){
+            if(boo1==true){
+                $('#yanzh').attr("disabled", false);
+            }else{
+                $('#yanzh').attr("disabled", true);
+            }
+        }
+        $('#number').keydown(function () {
+            num = $("#number").val();
+            if (boo1 == true && num != null&&num!="") {
+                $("#btn").attr("disabled",false)
             }
         })
+
+
     })
 </script>
 </body>
