@@ -27,8 +27,6 @@
             </div>
             <div class="register">
                 <button id="btn" disabled="disabled">注册</button>
-
-
             </div>
         </form>
 
@@ -51,18 +49,14 @@
     })(jQuery);
 
     $(function () {
-        /* $('button').click(function( ){ window.location.href=  "http://localhost:63342/注册/success.html"
-         })*/
-       /* $(window).change(function(){
-            select();
-        })*/
+
         var boo1 = false
         var num = $("#number").val();
         var tel = $("#tel").val();
         console.log(num)
         var id = $.getUrlParam('_ijt');
         $('#id').val(id);
-        $('#tel').blur(function () {
+        $('#tel').keydown(function () {
              tel = $("#tel").val();
             var reg = new RegExp(/^1[0-9]{10}$/);
             boo1 = reg.test(tel);
@@ -98,6 +92,7 @@
         $('#number').blur(function () {
 
             num = $("#number").val();
+
             if (boo1 == true && num != null&&num!="" &&flag==true) {
                 alert(";kp")
                 $("#btn").attr("disabled",false)
@@ -105,6 +100,7 @@
         });
 
         $('.agree').click(function(){
+            tel=$('#tel').val();
             if(flag==false){
                 $(this).text("√");
                 flag=true;
@@ -112,12 +108,20 @@
                 $(this).text("");
                 flag=false;
             }
+            alert(num)
             if (boo1 == true && num != null&&num!="" &&flag==true) {
-                alert(num)
+
                 $("#btn").attr("disabled",false)
             }
         })
-
+        $('#number').mousedown(function () {
+            tel = $("#tel").val();
+            var reg = new RegExp(/^1[0-9]{10}$/);
+            boo1 = reg.test(tel);
+            if(boo1==false){
+                alert("请输入正确的手机号")
+            }
+        })
     })
 </script>
 </body>
