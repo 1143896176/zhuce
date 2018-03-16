@@ -1,0 +1,139 @@
+/*注册页css*/
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+.warp {
+    height: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    border: 1px solid red;
+}
+
+.header {
+    height: 50px;
+}
+
+.center {
+    margin: 0 auto;
+    width: 90%;
+}
+
+.a {
+    display: inline-block;
+    height: 20px;
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #333333;
+
+    text-align: left;
+}
+
+.register>button {
+    margin: 0 auto;
+    display: block;
+    height: 45px;
+    width: 100%;
+    background: #c9ac51;
+    border-radius: 100px;
+    border: none;
+    color: white;
+    font-size: 17px;
+}
+
+input {
+    border: 0px;
+    outline: none;
+    cursor: pointer;
+    position:relative;
+    top: -4px;
+    font-size: 16px;
+    height: 80%;
+
+    left: 15px;
+
+    background-color: transparent;
+}
+
+.number input{
+    top: 0;
+    max-width: 145px;
+}
+.tel{
+    background:#ffffff;
+    border:1px solid #979797;
+    border-radius:100px;
+    align-items: center;
+    line-height: 40px;
+    height: 45px;
+    margin-bottom: 20px;
+}
+.number{
+    background:#ffffff;
+    border:1px solid #979797;
+    border-radius:100px;
+    align-items: center;
+    line-height: 32px;
+    height: 45px;
+    margin-bottom: 20px;
+    padding-right: 20px;
+}
+.img-t{
+    display: inline-block;
+    height:23px;
+    width: 15px;
+    background: url("../img/tel.png") no-repeat center;
+    background-size: contain;
+    margin-top: 10px;
+    margin-left: 15px;
+}
+.img-y{
+    display: inline-block;
+    height:23px;
+    width: 15px;
+    background: url("../img/yanzheng.png") no-repeat center;
+    background-size: contain;
+    margin-top: 10px;
+    margin-left: 15px;
+    text-align: center;
+    font-size: 10px;
+    line-height: 24px;
+
+}
+#yanzh{
+    border: 0px solid white;
+    background: transparent;
+    font-size: 16px;
+    color:#4a90e2;
+    float: right;
+    margin-top: 12px;
+}
+.footer{
+    position:fixed;
+    bottom: 0px;
+    height:50px;
+    width: 100%;
+    text-align: center;
+    font-family:PingFangSC-Regular;
+    font-size:13px;
+    color:#666666;
+    letter-spacing:0;
+
+}
+.footer a{
+    text-decoration: none;
+    color: #c9ac51;
+}
+.agree{
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: #c9ac51;
+}

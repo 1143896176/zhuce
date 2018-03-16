@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1,minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="css/register.css">
+    <title>注册</title>
+
+</head>
+<body>
+<div class="warp">
+    <div class="header"></div>
+    <div class="center">
+        <form action="http://127.0.0.1:8081/aaa" method="post">
+            <div class="tel">
+                <span class="img-t"></span>
+
+                <input id="tel" name='tel' type="number" placeholder="请输入手机号">
+            </div>
+            <div class="number">
+                <span class="img-y" style="padding-bottom: 1px;">T</span>
+
+                <input id="number" name='number'type="number" placeholder="输入验证码">
+                <button type="button" id="yanzh">发送验证码</button>
+                <input id="id" name="id"></input>
+            </div>
+            <div class="register">
+                <button id="btn">注册</button>
+            </div>
+        </form>
+
+    </div>
+    <div class="footer">
+        <span class="agree" style="color:#fff;">√</span>
+        我已阅读并同意<a href="javascript:void(0)">《用户服务协议》</a>
+    </div>
+
+</div>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script>
+    (function ($) {
+        $.getUrlParam = function (name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]);
+            return null;
+        }
+    })(jQuery);
+
+    $(function () {
+        /* $('button').click(function( ){ window.location.href=  "http://localhost:63342/注册/success.html"
+         })*/
+        var boo1 = false
+        var num = $("#number").val();
+        var id = $.getUrlParam('_ijt');
+        $('#id').val(id);
+        $('#tel').blur(function () {
+            var tel = $("#tel").val();
+            var reg = new RegExp(/^1[0-9]{10}$/);
+            boo1 = reg.test(tel);
+            if (boo1) {
+
+                console.log(boo1)
+            } else {
+
+                console.log(boo1)
+            }
+
+        })
+        $('#btn').click(function () {
+            if (boo1 == true && num != null) {
+                console.log(num != null)
+                $("#btn").attr("disabled", false);
+            } else {
+                $("#btn").attr("disabled", true);
+            }
+        })
+
+
+    })
+</script>
+</body>
+</html>
