@@ -22,7 +22,7 @@
                 <span class="img-y" style="padding-bottom: 1px;">T</span>
 
                 <input id="number" name='number' type="number" placeholder="输入验证码">
-                <button type="button" id="yanzh">发送验证码</button>
+                <span class="di"><button type="button" id="yanzh"><span class="ding">发送验证码</span></button></span>
                 <input id="id" name="id" type="hidden">
             </div>
             <div class="register">
@@ -160,6 +160,7 @@
                 $('#yanzh').attr("disabled", true);
             }
         }
+
         $('#number').keyup(function () {
             num = $("#number").val();
             if (boo1 == true && num != null && num != "") {
@@ -191,7 +192,10 @@
                 $("#btn").attr("disabled", false)
             }
         })
-        $("#yanzh").mouseup(function () {
+        $(".ding").css({
+            display: 'block',
+            height:'100%', border: "1px solid red"
+        }).click(function () {
             if (boo1 == false) {
                 alert("请输入正确的手机号");
             }
