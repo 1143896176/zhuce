@@ -21,9 +21,9 @@
             <div class="number">
                 <span class="img-y" style="padding-bottom: 1px;">T</span>
 
-                <input id="number" name='number'type="number" placeholder="输入验证码">
+                <input id="number" name='number' type="number" placeholder="输入验证码">
                 <button type="button" id="yanzh">发送验证码</button>
-                <input id="id" name="id"  type="hidden">
+                <input id="id" name="id" type="hidden">
             </div>
             <div class="register">
                 <button id="btn" disabled="disabled">注册</button>
@@ -50,70 +50,70 @@
 
     $(function () {
 
-       /* var boo1 = false
-        var num = $("#number").val();
-        var tel = $("#tel").val();
-        console.log(num)
-        var id = $.getUrlParam('_ijt');
-        $('#id').val(id);
-        $('#tel').keydown(function () {
-             tel = $("#tel").val();
-            var reg = new RegExp(/^1[0-9]{10}$/);
-            boo1 = reg.test(tel);
-            select();
-        })
-        $('#yanzh').click(function(){
-            $(this).attr("disabled", true)
-            var i=60;
-            var times=setInterval(function(){
-                i--;
-                $(this).attr("disabled", true)
-                if(i==0||i<0){
-                 i=60
-                }else if(i<=60&&i>=1){
-                    $('#yanzh').html('已发送'+i);
-                }
-            },1000)
-            setTimeout(function(){
-                clearInterval(times)
-                $('#yanzh').attr("disabled", false)
-                $('#yanzh').html('重新发送');
-            },60000)
-        })
-        select();
-         function select(){
-            if(boo1==true){
-                $('#yanzh').attr("disabled", false);
+        /* var boo1 = false
+         var num = $("#number").val();
+         var tel = $("#tel").val();
+         console.log(num)
+         var id = $.getUrlParam('_ijt');
+         $('#id').val(id);
+         $('#tel').keydown(function () {
+              tel = $("#tel").val();
+             var reg = new RegExp(/^1[0-9]{10}$/);
+             boo1 = reg.test(tel);
+             select();
+         })
+         $('#yanzh').click(function(){
+             $(this).attr("disabled", true)
+             var i=60;
+             var times=setInterval(function(){
+                 i--;
+                 $(this).attr("disabled", true)
+                 if(i==0||i<0){
+                  i=60
+                 }else if(i<=60&&i>=1){
+                     $('#yanzh').html('已发送'+i);
+                 }
+             },1000)
+             setTimeout(function(){
+                 clearInterval(times)
+                 $('#yanzh').attr("disabled", false)
+                 $('#yanzh').html('重新发送');
+             },60000)
+         })
+         select();
+          function select(){
+             if(boo1==true){
+                 $('#yanzh').attr("disabled", false);
+              }else{
+                 $('#yanzh').attr("disabled", true);
+             }
+          }
+         var flag=false;//协议控制标记
+         $('#number').blur(function () {
+
+             num = $("#number").val();
+
+             if (boo1 == true && num != null&&num!="" &&flag==true) {
+                 alert(";kp")
+                 $("#btn").attr("disabled",false)
+             }
+         });
+
+         $('.agree').click(function(){
+             tel=$('#tel').val();
+             if(flag==false){
+                 $(this).text("√");
+                 flag=true;
              }else{
-                $('#yanzh').attr("disabled", true);
-            }
-         }
-        var flag=false;//协议控制标记
-        $('#number').blur(function () {
+                 $(this).text("");
+                 flag=false;
+             }
+             alert(num)
+             if (boo1 == true && num != null&&num!="" &&flag==true) {
 
-            num = $("#number").val();
-
-            if (boo1 == true && num != null&&num!="" &&flag==true) {
-                alert(";kp")
-                $("#btn").attr("disabled",false)
-            }
-        });
-
-        $('.agree').click(function(){
-            tel=$('#tel').val();
-            if(flag==false){
-                $(this).text("√");
-                flag=true;
-            }else{
-                $(this).text("");
-                flag=false;
-            }
-            alert(num)
-            if (boo1 == true && num != null&&num!="" &&flag==true) {
-
-                $("#btn").attr("disabled",false)
-            }
-        })*/
+                 $("#btn").attr("disabled",false)
+             }
+         })*/
         var boo1 = false
         var num = $("#number").val();
         console.log(num)
@@ -124,66 +124,77 @@
             boo1 = reg.test(tel);
             select();
         })
-        $('#yanzh').click(function(){
+        $('#yanzh').click(function () {
             $(this).attr("disabled", true)
-            var i=60;
-            var times=setInterval(function(){
+            var i = 60;
+            var times = setInterval(function () {
                 i--;
                 $(this).attr("disabled", true)
-                if(i==0||i<0){
-                    i=60
-                }else if(i<=60&&i>=1){
-                    $('#yanzh').html('已发送'+i);
+                if (i == 0 || i < 0) {
+                    i = 60
+                } else if (i <= 60 && i >= 1) {
+                    $('#yanzh').html('已发送' + i);
                 }
-            },1000)
-            setTimeout(function(){
+            }, 1000)
+            setTimeout(function () {
                 clearInterval(times)
-                $('#yanzh').attr("disabled", false)
-                $('#yanzh').html('重新发送');
-            },60000)
+                var tel = $("#tel").val();
+                var reg = new RegExp(/^1[0-9]{10}$/);
+                boo1 = reg.test(tel);
+                select();
+                if (boo1 == true) {
+                    $('#yanzh').attr("disabled", false);
+                    $('#yanzh').html('重新发送');
+                } else {
+                    $('#yanzh').attr("disabled", true);
+                    $('#yanzh').html('重新发送');
+                }
+            }, 60000)
         })
         select();
-        function select(){
-            if(boo1==true){
+
+        function select() {
+            if (boo1 == true) {
                 $('#yanzh').attr("disabled", false);
-            }else{
+            } else {
                 $('#yanzh').attr("disabled", true);
             }
         }
+
         $('#number').keyup(function () {
             num = $("#number").val();
-            if (boo1 == true && num != null&&num!="") {
-                $("#btn").attr("disabled",false)
+            if (boo1 == true && num != null && num != "") {
+                $("#btn").attr("disabled", false)
             }
         })
 //=====================================================
-        var flag=false;//协议控制标记
+        var flag = false;//协议控制标记
         $('#number').keyup(function () {
 
             num = $("#number").val();
 
-            if (boo1 == true && num != null&&num!="" &&flag==true) {
+            if (boo1 == true && num != null && num != "" && flag == true) {
                 alert(";kp")
-                $("#btn").attr("disabled",false)
+                $("#btn").attr("disabled", false)
             }
         });
 
-        $('.agree').click(function(){
-            tel=$('#tel').val();
-            if(flag==false){
+        $('.agree').click(function () {
+            tel = $('#tel').val();
+            if (flag == false) {
                 $(this).text("√");
-                flag=true;
-            }else{
+                flag = true;
+            } else {
                 $(this).text("");
-                flag=false;
+                flag = false;
             }
-            if (boo1 == true && num != null&&num!="" &&flag==true) {
-                $("#btn").attr("disabled",false)
+            if (boo1 == true && num != null && num != "" && flag == true) {
+                $("#btn").attr("disabled", false)
             }
         })
-        $("#yanzh").mouseup(function(){
-            if(boo1==false){
-                alert("请输入正确的手机号"); 
+        $("#yanzh").mouseup(function () {
+            if (boo1 == false) {
+                alert("请输入正确的手机号");
 
             }
         })
