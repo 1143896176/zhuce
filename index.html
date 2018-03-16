@@ -23,16 +23,18 @@
 
                 <input id="number" name='number'type="number" placeholder="输入验证码">
                 <button type="button" id="yanzh">发送验证码</button>
-                <input id="id" name="id"></input>
+                <input id="id" name="id"  type="hidden">
             </div>
             <div class="register">
-                <button id="btn">注册</button>
+                <button id="btn" disabled="disabled">注册</button>
+
+
             </div>
         </form>
 
     </div>
     <div class="footer">
-        <span class="agree" style="color:#fff;">√</span>
+        <span class="agree" style="color:#fff;"></span>
         我已阅读并同意<a href="javascript:void(0)">《用户服务协议》</a>
     </div>
 
@@ -51,32 +53,70 @@
     $(function () {
         /* $('button').click(function( ){ window.location.href=  "http://localhost:63342/注册/success.html"
          })*/
+       /* $(window).change(function(){
+            select();
+        })*/
         var boo1 = false
         var num = $("#number").val();
+        var tel = $("#tel").val();
+        console.log(num)
         var id = $.getUrlParam('_ijt');
         $('#id').val(id);
         $('#tel').blur(function () {
-            var tel = $("#tel").val();
+             tel = $("#tel").val();
             var reg = new RegExp(/^1[0-9]{10}$/);
             boo1 = reg.test(tel);
-            if (boo1) {
-
-                console.log(boo1)
-            } else {
-
-                console.log(boo1)
-            }
-
+            select();
         })
-        $('#btn').click(function () {
-            if (boo1 == true && num != null) {
-                console.log(num != null)
-                $("#btn").attr("disabled", false);
-            } else {
-                $("#btn").attr("disabled", true);
+        $('#yanzh').click(function(){
+            $(this).attr("disabled", true)
+            var i=60;
+            var times=setInterval(function(){
+                i--;
+                $(this).attr("disabled", true)
+                if(i==0||i<0){
+                 i=60
+                }else if(i<=60&&i>=1){
+                    $('#yanzh').html('已发送'+i);
+                }
+            },1000)
+            setTimeout(function(){
+                clearInterval(times)
+                $('#yanzh').attr("disabled", false)
+                $('#yanzh').html('重新发送');
+            },60000)
+        })
+        select();
+         function select(){
+            if(boo1==true){
+                $('#yanzh').attr("disabled", false);
+             }else{
+                $('#yanzh').attr("disabled", true);
+            }
+         }
+        var flag=false;//协议控制标记
+        $('#number').blur(function () {
+
+            num = $("#number").val();
+            if (boo1 == true && num != null&&num!="" &&flag==true) {
+                alert(";kp")
+                $("#btn").attr("disabled",false)
+            }
+        });
+
+        $('.agree').click(function(){
+            if(flag==false){
+                $(this).text("√");
+                flag=true;
+            }else{
+                $(this).text("");
+                flag=false;
+            }
+            if (boo1 == true && num != null&&num!="" &&flag==true) {
+                alert(num)
+                $("#btn").attr("disabled",false)
             }
         })
-
 
     })
 </script>
