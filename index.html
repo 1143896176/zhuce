@@ -118,9 +118,9 @@
         var num = $("#number").val();
         console.log(num)
         $('#id').val(id);
-        $('#tel').keydown(function () {
+        $('#tel').keyup(function () {
             var tel = $("#tel").val();
-            var reg = new RegExp(/^1[0-9]{9}$/);
+            var reg = new RegExp(/^1[0-9]{10}$/);
             boo1 = reg.test(tel);
             select();
         })
@@ -150,14 +150,42 @@
                 $('#yanzh').attr("disabled", true);
             }
         }
-        $('#number').keydown(function () {
+        $('#number').keyup(function () {
             num = $("#number").val();
             if (boo1 == true && num != null&&num!="") {
                 $("#btn").attr("disabled",false)
             }
         })
+//=====================================================
+        var flag=false;//协议控制标记
+        $('#number').keyup(function () {
 
+            num = $("#number").val();
 
+            if (boo1 == true && num != null&&num!="" &&flag==true) {
+                alert(";kp")
+                $("#btn").attr("disabled",false)
+            }
+        });
+
+        $('.agree').click(function(){
+            tel=$('#tel').val();
+            if(flag==false){
+                $(this).text("√");
+                flag=true;
+            }else{
+                $(this).text("");
+                flag=false;
+            }
+            if (boo1 == true && num != null&&num!="" &&flag==true) {
+                $("#btn").attr("disabled",false)
+            }
+        })
+        $("#yanzh").mouseup(function(){
+            if(boo1==false){
+                alert("请输入正确的手机号");
+            }
+        })
     })
 </script>
 </body>
