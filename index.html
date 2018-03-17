@@ -46,9 +46,7 @@
             return null;
         }
     })(jQuery);
-
     $(function () {
-
         var boo1 = false
         var num = $("#number").val();
         console.log(num)
@@ -87,7 +85,6 @@
             }, 60000)
         })
         select();
-
         function select() {
             if (boo1 == true) {
                 $('#yanzh').attr("disabled", false);
@@ -95,13 +92,7 @@
                 $('#yanzh').attr("disabled", true);
             }
         }
-
-       /* $('#number').keyup(function () {
-            num = $("#number").val();
-            if (boo1 == true && num != null && num != ""&&flag == true) {
-                $("#btn").attr("disabled", false)
-            }else
-        })*/
+        
 //=====================================================
         var flag = false;//协议控制标记
         $('#number').keyup(function () {
