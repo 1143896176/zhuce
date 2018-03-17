@@ -22,7 +22,7 @@
                 <span class="img-y" style="padding-bottom: 1px;">T</span>
 
                 <input id="number" name='number' type="number" placeholder="输入验证码">
-                <span class="di"><button type="button" id="yanzh"><span class="ding">发送验证码</span></button></span>
+                <button type="button" id="yanzh"><span class="di">发送验证码</span></button>
                 <input id="id" name="id" type="hidden">
             </div>
             <div class="register">
@@ -33,7 +33,7 @@
     </div>
     <div class="footer">
         <span class="agree" style="color:#fff;"></span>
-        我已阅读并同意<a href="javascript:void(0)">《用户服务协议》</a>
+        我已阅读并同意<a href="http://htceshi.canyannet.com/public/index.php/admin/registration/regist_info/regist_class/1">《用户服务协议》</a>
     </div>
 
 </div>
@@ -161,21 +161,20 @@
             }
         }
 
-        $('#number').keyup(function () {
+       /* $('#number').keyup(function () {
             num = $("#number").val();
-            if (boo1 == true && num != null && num != "") {
+            if (boo1 == true && num != null && num != ""&&flag == true) {
                 $("#btn").attr("disabled", false)
-            }
-        })
+            }else
+        })*/
 //=====================================================
         var flag = false;//协议控制标记
         $('#number').keyup(function () {
-
             num = $("#number").val();
-
             if (boo1 == true && num != null && num != "" && flag == true) {
-                alert(";kp")
                 $("#btn").attr("disabled", false)
+            }else{
+                $("#btn").attr("disabled", true)
             }
         });
 
@@ -190,11 +189,14 @@
             }
             if (boo1 == true && num != null && num != "" && flag == true) {
                 $("#btn").attr("disabled", false)
+            }else{
+                $("#btn").attr("disabled", true)
             }
         })
-        $(".ding").css({
+        //手机号不对提示部分
+        $(".di").css({
             display: 'block',
-            height:'100%', border: "1px solid red"
+            height:'100%'
         }).click(function () {
             if (boo1 == false) {
                 alert("请输入正确的手机号");
