@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <a >点我</a>
+</body>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script>
+    var _timer = {};
+    function delay_till_last(id, fn, wait) {
+        if (_timer[id]) {
+            window.clearTimeout(_timer[id]);
+            delete _timer[id];
+        }
+        return _timer[id] = window.setTimeout(function() {
+            fn();
+            delete _timer[id];
+        }, wait);
+    }
+    $dom.on('click', function() {
+        delay_till_last('id', function() {//注意 id 是唯一的
+            //响应事件
+        }, 100);
+    });
+    $(function () {
+
+        var i=0
+        $("a").click(function(){
+            i++;
+            delay_till_last('id', function() {//注意 id 是唯一的
+                //响应事件
+                console.log(i)
+            }, 3000);
+        })
+
+    })
+</script>
+
+</html>
